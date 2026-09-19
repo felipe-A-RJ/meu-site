@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bellavie Cosméticos</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<!-- TOPO -->
+
+<div class="top-bar">
+    Frete grátis acima de R$ 199 • Somente para Rio de Janeiro
+</div>
+
+
+<header>
+
+    <div class="logo">
+        <span>Bella</span>vie
+    </div>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
+
+    <div class="header-icons">
+
+        <button class="icon-button">
+            <i class="fa-regular fa-heart"></i>
+        </button>
+
+        <button
+            class="icon-button cart-icon"
+            onclick="abrirCarrinho()"
+        >
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <span id="contadorCarrinho">
+                0
+            </span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section id="inicio" class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            Nova coleção
+        </span>
+
+        <h1>
+            Sua beleza.<br>
+            Seu momento.
+        </h1>
+
+        <p>
+            Descubra produtos selecionados para
+            transformar sua rotina de beleza e cuidado.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#produtos"
+                class="btn-primary"
+            >
+                Comprar agora
+            </a>
+
+            <a
+                href="#categorias"
+                class="btn-secondary"
+            >
+                Ver categorias
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BENEFÍCIOS -->
+
+<section class="beneficios">
+
+    <div class="beneficio">
+
+        <i class="fa-solid fa-truck-fast"></i>
+
+        <div>
+            <strong>Entrega rápida</strong>
+            <span>Consulte a região</span>
+        </div>
+
+    </div>
+
+
+    <div class="beneficio">
+
+        <i class="fa-solid fa-shield-heart"></i>
+
+        <div>
+            <strong>Compra segura</strong>
+            <span>Seus dados protegidos</span>
+        </div>
+
+    </div>
+
+
+    <div class="beneficio">
+
+        <i class="fa-solid fa-credit-card"></i>
+
+        <div>
+            <strong>Pagamento fácil</strong>
+            <span>Pix e cartão</span>
+        </div>
+
+    </div>
+
+
+    <div class="beneficio">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+        <div>
+            <strong>Atendimento</strong>
+            <span>Via WhatsApp</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIAS -->
+
+<section
+    id="categorias"
+    class="categorias"
+>
+
+    <div class="section-header">
+
+        <span>
+            Escolha por categoria
+        </span>
+
+        <h2>
+            Encontre o cuidado ideal para você
+        </h2>
+
+    </div>
+
+
+    <div class="categorias-grid">
+
+        <div
+            class="categoria-card"
+            onclick="filtrarCategoria('Perfumes')"
+        >
+
+            <i class="fa-solid fa-spray-can-sparkles"></i>
+
+            <h3>Perfumes</h3>
+
+        </div>
+
+
+        <div
+            class="categoria-card"
+            onclick="filtrarCategoria('Maquiagem')"
+        >
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            <h3>Maquiagem</h3>
+
+        </div>
+
+
+        <div
+            class="categoria-card"
+            onclick="filtrarCategoria('Skincare')"
+        >
+
+            <i class="fa-solid fa-droplet"></i>
+
+            <h3>Skincare</h3>
+
+        </div>
+
+
+        <div
+            class="categoria-card"
+            onclick="filtrarCategoria('Cabelos')"
+        >
+
+            <i class="fa-solid fa-scissors"></i>
+
+            <h3>Cabelos</h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUTOS -->
+
+<section
+    id="produtos"
+    class="produtos-section"
+>
+
+    <div class="section-header">
+
+        <span>
+            Selecionados para você
+        </span>
+
+        <h2>
+            Produtos em destaque
+        </h2>
+
+    </div>
+
+
+    <div class="toolbar">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="busca"
+                placeholder="Buscar produtos..."
+                onkeyup="buscarProdutos()"
+            >
+
+        </div>
+
+
+        <select
+            id="categoria"
+            onchange="filtrarSelect()"
+        >
+
+            <option value="Todos">
+                Todas as categorias
+            </option>
+
+            <option value="Perfumes">
+                Perfumes
+            </option>
+
+            <option value="Maquiagem">
+                Maquiagem
+            </option>
+
+            <option value="Skincare">
+                Skincare
+            </option>
+
+            <option value="Cabelos">
+                Cabelos
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div
+        id="listaProdutos"
+        class="produtos-grid"
+    ></div>
+
+</section>
+
+
+<!-- BANNER PROMOCIONAL -->
+
+<section class="promo">
+
+    <div>
+
+        <span>
+            Oferta especial
+        </span>
+
+        <h2>
+            Até 30% OFF em produtos selecionados
+        </h2>
+
+        <p>
+            Aproveite as ofertas por tempo limitado.
+        </p>
+
+        <a
+            href="#produtos"
+            class="btn-primary"
+        >
+            Ver ofertas
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- SOBRE -->
+
+<section
+    id="sobre"
+    class="sobre"
+>
+
+    <div>
+
+        <span class="mini-title">
+            Sobre a Bellavie
+        </span>
+
+        <h2>
+            Beleza é cuidado, confiança e bem-estar.
+        </h2>
+
+        <p>
+            Selecionamos produtos para cuidar da sua
+            pele, cabelo e beleza com qualidade,
+            praticidade e carinho.
+        </p>
+
+        <p>
+            Nossa missão é tornar sua experiência
+            de compra simples, segura e especial.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <div>
+
+        <h2>
+            Receba novidades e ofertas
+        </h2>
+
+        <p>
+            Cadastre-se para receber descontos especiais.
+        </p>
+
+    </div>
+
+
+    <div class="newsletter-input">
+
+        <input
+            type="email"
+            placeholder="Digite seu e-mail"
+        >
+
+        <button>
+            Quero receber
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="logo footer-logo">
+                <span>Bella</span>vie
+            </div>
+
+            <p>
+                Cosméticos selecionados para realçar
+                sua beleza todos os dias.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Institucional</h3>
+
+            <a href="#">
+                Sobre nós
+            </a>
+
+            <a href="#">
+                Política de privacidade
+            </a>
+
+            <a href="#">
+                Trocas e devoluções
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Atendimento</h3>
+
+            <a href="#">
+                Fale conosco
+            </a>
+
+            <a href="#">
+                WhatsApp
+            </a>
+
+            <a href="#">
+                Perguntas frequentes
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Redes sociais</h3>
+
+            <div class="social">
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Bellavie Cosméticos.
+        Todos os direitos reservados.
+
+    </div>
+
+</footer>
+
+
+<!-- OVERLAY -->
+
+<div
+    id="overlay"
+    class="overlay"
+    onclick="fecharCarrinho()"
+></div>
+
+
+<!-- CARRINHO -->
+
+<aside
+    id="carrinho"
+    class="carrinho"
+>
+
+    <div class="cart-header">
+
+        <div>
+
+            <span>
+                Sua sacola
+            </span>
+
+            <h2>
+                Carrinho
+            </h2>
+
+        </div>
+
+
+        <button onclick="fecharCarrinho()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="itensCarrinho"
+        class="cart-items"
+    ></div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>
+                Total
+            </span>
+
+            <strong id="total">
+                R$ 0,00
+            </strong>
+
+        </div>
+
+
+        <button
+            class="checkout"
+            onclick="finalizarPedido()"
+        >
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            Finalizar pelo WhatsApp
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
